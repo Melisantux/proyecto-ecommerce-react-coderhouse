@@ -1,4 +1,5 @@
 import { CartWidget } from "../CartWidget/CartWidget.component";
+import { Link } from "react-router-dom";
 import styles from "./NavBar.module.css";
 
 export const NavBar = () => {
@@ -6,7 +7,9 @@ export const NavBar = () => {
     <header>
       <nav className={styles["navbar-container"]}>
         <div>
-          <h2 className={styles["brand"]}>Poké Collector</h2>
+          <Link to={"/"} className={styles["navbar-link"]}>
+            <h2 className={styles["brand"]}>Poké Collector</h2>
+          </Link>
         </div>
 
         <div className={`nes-field ${styles["search-bar"]}`}>

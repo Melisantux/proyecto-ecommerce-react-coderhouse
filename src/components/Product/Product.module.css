@@ -1,0 +1,75 @@
+.card {
+  background: white;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  isolation: isolate;
+  position: relative;
+  transition: 400ms;
+}
+
+.card::before {
+  border-radius: inherit;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+  content: "";
+  inset: 0;
+  z-index: -1;
+  opacity: 0;
+  position: absolute;
+  transition: opacity 300ms ease-in-out;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.card-content {
+  flex: 1;
+  padding: 12px;
+}
+
+.card-image {
+  aspect-ratio: 1;
+  margin-inline: auto;
+  object-fit: contain;
+  width: min(300px, 100%);
+}
+
+.card-title {
+  display: block;
+  color: inherit;
+  font-size: 20px;
+  margin-block: 12px 8px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.card-title:hover {
+  color: inherit;
+  text-decoration: none;
+}
+
+.btn-cart {
+  background-color: hsl(354, 100%, 40%);
+  border-bottom-left-radius: inherit;
+  border-bottom-right-radius: inherit;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  outline: none;
+  padding: 16px;
+  text-align: center;
+  transition: background-color 150ms ease-in-out;
+  width: 100%;
+}
+
+.btn-cart:hover {
+  background-color: hsl(354, 100%, 30%);
+}
+
+.btn-cart:focus-visible {
+  outline: 2px solid black;
+}
