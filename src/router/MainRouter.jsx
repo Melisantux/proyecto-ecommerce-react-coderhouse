@@ -3,6 +3,7 @@ import { Category } from "../pages/Category/Category.page";
 import { Home } from "../pages/Home/Home.page";
 import { NavBar } from "../components/NavBar/NavBar.component";
 import { ProductDetail } from "../pages/ProductDetail/ProductDetail.page";
+import { Footer } from "../components/Footer/Footer.component";
 
 export const MainRouter = () => {
   return (
@@ -14,7 +15,7 @@ export const MainRouter = () => {
         <Route path="/category/:category" element={<Category />} />
         <Route path="/product/:slug" element={<ProductDetail />} />
       </Routes>
-      <footer>Footer</footer>
+      <Footer />
     </BrowserRouter>
   );
 };
