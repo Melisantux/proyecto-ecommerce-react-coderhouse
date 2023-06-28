@@ -15,11 +15,11 @@ export const Footer = () => {
             authentic and high-quality products, ensuring that every item you
             find here is worthy of your collection.
           </p>
-          <p>
+          <p className={styles["section-text"]}>
             Get ready to catch 'em all, relive cherished memories, and create
-            new ones with our enchanting range of Pokemon merchandise. Your
-            adventure begins here!
+            new ones with our enchanting range of Pokemon merchandise.
           </p>
+          <p>Your adventure begins here!</p>
         </section>
         <section
           className={`${styles["contact-section"]} nes-container with-title is-centered`}
