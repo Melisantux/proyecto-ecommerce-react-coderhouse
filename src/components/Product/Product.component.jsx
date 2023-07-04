@@ -8,7 +8,7 @@ export const Product = ({ product }) => {
   return (
     <article className={`${styles["card"]} nes-pointer`}>
       <div
-        onClick={() => navigate(`/product/${product.slug}`)}
+        onClick={() => navigate(`/product/${product.id}`)}
         className={styles["card-content"]}
       >
         <img
@@ -16,7 +16,7 @@ export const Product = ({ product }) => {
           alt={product.name}
           className={styles["card-image"]}
         />
-        <Link to={`/product/${product.slug}`} className={styles["card-title"]}>
+        <Link to={`/product/${product.id}`} className={styles["card-title"]}>
           {product.name}
         </Link>
         <p>US${product.price}</p>
