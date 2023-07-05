@@ -43,53 +43,69 @@ export const ProductDetail = () => {
               </p>
               <p className={styles["product-price"]}>US${product.price}</p>
               <div className={styles["add-to-cart-container"]}>
-                <button
-                  onClick={() => setCount(count - 1)}
-                  disabled={count === 1}
-                  className={styles["count-btn"]}
-                >
-                  <a className="nes-btn" href="#">
-                    -
-                  </a>
-                </button>
+                {product.stock === 0 ? null : (
+                  <div className={styles["quantity-btn-container"]}>
+                    <button
+                      onClick={() => setCount(count - 1)}
+                      disabled={count === 1}
+                      className={styles["count-btn"]}
+                    >
+                      <a className="nes-btn" href="#">
+                        -
+                      </a>
+                    </button>
 
-                <span className={styles["count-container"]}>{count}</span>
+                    <p className={styles["count-container"]}>{count}</p>
 
-                <button
-                  onClick={() => setCount(count + 1)}
-                  disabled={count === product.stock}
-                  className={styles["count-btn"]}
-                >
-                  <a className="nes-btn" href="#">
-                    +
-                  </a>
-                </button>
+                    <button
+                      onClick={() => setCount(count + 1)}
+                      disabled={count === product.stock}
+                      className={styles["count-btn"]}
+                    >
+                      <a className="nes-btn" href="#">
+                        +
+                      </a>
+                    </button>
+                  </div>
+                )}
 
-                <button className={styles["add-to-cart-btn"]}>
-                  <a className="nes-btn" href="#">
-                    Add to Cart
-                  </a>
-                </button>
+                {product.stock === 0 ? (
+                  <button className={styles["out-of-stock-btn"]} disabled>
+                    <a className="nes-btn press-start-font" href="#">
+                      Out of Stock
+                    </a>
+                  </button>
+                ) : (
+                  <button className={styles["add-to-cart-btn"]}>
+                    <a className="nes-btn press-start-font" href="#">
+                      Add to Cart
+                    </a>
+                  </button>
+                )}
               </div>
             </div>
           </section>
-          <section>
-            <h2 className={styles["section-title"]}>Description</h2>
-            <div className={styles["details-container"]}>
-              <p>{product.description}</p>
-            </div>
-          </section>
+          {product.description ? (
+            <section>
+              <h2 className={styles["section-title"]}>Description</h2>
+              <div className={styles["details-container"]}>
+                <p>{product.description}</p>
+              </div>
+            </section>
+          ) : null}
 
-          <section>
-            <h2 className={styles["section-title"]}>Features</h2>
-            <div className={styles["details-container"]}>
-              <ul>
-                {product.features.map((feature, index) => {
-                  return <li key={index}>{feature}</li>;
-                })}
-              </ul>
-            </div>
-          </section>
+          {product.features.length === 0 ? (
+            <section>
+              <h2 className={styles["section-title"]}>Features</h2>
+              <div className={styles["details-container"]}>
+                <ul>
+                  {product.features.map((feature, index) => {
+                    return <li key={index}>{feature}</li>;
+                  })}
+                </ul>
+              </div>
+            </section>
+          ) : null}
         </div>
       )}
     </div>
