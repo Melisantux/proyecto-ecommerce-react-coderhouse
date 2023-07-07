@@ -1,6 +1,11 @@
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
 .title {
   font-size: 20px;
-  margin-block: 0.5rem !important;
-  padding-block: 2rem !important;
+  margin-block: 0.5rem;
+  padding-block: 2rem;
   text-align: center;
 }

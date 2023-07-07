@@ -11,7 +11,7 @@
 .card::before {
   border-radius: inherit;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
-  content: "";
+  content: '';
   inset: 0;
   z-index: -1;
   opacity: 0;

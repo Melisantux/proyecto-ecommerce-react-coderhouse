@@ -1,36 +1,32 @@
-import { CategoryNavBar } from "../../components/CategoryNavBar/CategoryNavBar.component";
-import { collection, getDocs, getFirestore } from "firebase/firestore";
-import { ProductList } from "../../components/ProductList/ProductList.component";
-import { useEffect, useState } from "react";
-import styles from "./Home.module.css";
-import { Loading } from "../../components/Loading/Loading.component";
+import { useEffect, useState } from 'react';
+import { collection, getDocs, getFirestore } from 'firebase/firestore';
 
-/** @typedef {import('../../asyncMock').Product} Product */
+import { CategoryNavBar } from '../../components/CategoryNavBar/CategoryNavBar.component';
+import { ProductList } from '../../components/ProductList/ProductList.component';
+import { Loading } from '../../components/Loading/Loading.component';
+
+import styles from './Home.module.css';
 
 export const Home = () => {
-  /** @type {[productList: Product[], setProductsList: React.Dispatch<Product[]>]} */
   const [productsList, setProductsList] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const db = getFirestore();
 
-    const productCollection = collection(db, "products");
+    const productCollection = collection(db, 'products');
+
     getDocs(productCollection)
       .then((snapshot) => {
-        setProductsList(
-          snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
-        );
+        setProductsList(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
       })
       .catch((error) => console(error))
-      .then(() => setLoading(false));
+      .finally(() => setLoading(false));
   }, []);
 
   return (
-    <main>
-      <h1 className={`${styles["title"]} press-start-font`}>
-        Welcome to Poke Collector!
-      </h1>
+    <main className={styles.content}>
+      <h1 className={`${styles.title} press-start-font`}>Welcome to Poke Collector!</h1>
       <CategoryNavBar />
       {loading ? <Loading /> : <ProductList productsList={productsList} />}
     </main>
