@@ -73,3 +73,49 @@
 .btn-cart:focus-visible {
   outline: 2px solid black;
 }
+
+.out-of-stock-btn {
+  background-color: #f3f3f3;
+  border-bottom-left-radius: inherit;
+  border-bottom-right-radius: inherit;
+  border: 0;
+  font-size: 16px;
+  font-weight: 600;
+  outline: none;
+  padding: 16px;
+  text-align: center;
+  width: 100%;
+}
+
+.out-of-stock-btn:focus {
+  outline: none;
+}
+
+.sale {
+  align-items: center;
+  background-color: #ff1425;
+  border-radius: 50%;
+  color: white;
+  display: inline-flex;
+  font-weight: 600;
+  height: 3rem;
+  justify-content: center;
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+  width: 3rem;
+}
+
+.price-container {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.onSale {
+  text-decoration: line-through;
+}
+
+.salePrice {
+  color: #ff1425;
+  font-weight: 700;
+}

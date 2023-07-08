@@ -5,6 +5,7 @@ import { collection, query, where, getDocs, getFirestore } from 'firebase/firest
 import { CategoryNavBar } from '../../components/CategoryNavBar/CategoryNavBar.component';
 import { ProductList } from '../../components/ProductList/ProductList.component';
 import { Loading } from '../../components/Loading/Loading.component';
+import { Error } from '../Error/Error.page';
 
 import styles from './Category.module.css';
 
@@ -27,15 +28,28 @@ export const Category = () => {
       .then((snapshot) => {
         setProductList(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
       })
-      .catch((error) => console(error))
+      .catch((error) => {
+        console(error);
+        <Error />;
+      })
       .finally(() => setLoading(false));
   }, [category]);
 
   return (
-    <main>
+    <main className={styles.content}>
       <h1 className={`${styles['title']} press-start-font`}>Welcome to Poke Collector!</h1>
       <CategoryNavBar />
-      {loading ? <Loading /> : <ProductList productsList={productList} />}
+      {loading ? (
+        <Loading />
+      ) : productList.length !== 0 ? (
+        <ProductList productsList={productList} />
+      ) : (
+        <Error
+          secondErrorMessage={
+            "The specific product category you're searching for is currently out of stock."
+          }
+        />
+      )}
     </main>
   );
 };

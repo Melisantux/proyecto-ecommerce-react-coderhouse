@@ -4,6 +4,7 @@ import { collection, getDocs, getFirestore } from 'firebase/firestore';
 import { CategoryNavBar } from '../../components/CategoryNavBar/CategoryNavBar.component';
 import { ProductList } from '../../components/ProductList/ProductList.component';
 import { Loading } from '../../components/Loading/Loading.component';
+import { Error } from '../Error/Error.page';
 
 import styles from './Home.module.css';
 
@@ -20,7 +21,11 @@ export const Home = () => {
       .then((snapshot) => {
         setProductsList(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
       })
-      .catch((error) => console(error))
+      .catch((error) => {
+        console(error);
+
+        <Error />;
+      })
       .finally(() => setLoading(false));
   }, []);
 

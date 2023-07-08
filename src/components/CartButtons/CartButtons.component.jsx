@@ -39,23 +39,27 @@ export const CartButtons = ({ product }) => {
     <div className={styles['add-to-cart-container']}>
       {product.stock - productInCart?.quantity === 0 ? null : (
         <div className={styles['quantity-btn-container']}>
-          <button className={`${styles['count-btn']} nes-btn`} onClick={handleSubstract}>
-            -
+          <button
+            className={`${styles['count-btn']} nes-btn material-symbols-outlined`}
+            onClick={handleSubstract}
+          >
+            remove
           </button>
 
           <p className={styles['count-container']}>{quantity}</p>
 
-          <button className={`${styles['count-btn']} nes-btn`} onClick={handleAdd}>
-            +
+          <button
+            className={`${styles['count-btn']} nes-btn material-symbols-outlined`}
+            onClick={handleAdd}
+          >
+            add
           </button>
         </div>
       )}
 
       {product.stock - productInCart?.quantity === 0 ? (
-        <button className={styles['out-of-stock-btn']} disabled>
-          <a className='nes-btn press-start-font' href='#'>
-            Out of Stock
-          </a>
+        <button className={`${styles['out-of-stock-btn']} nes-btn press-start-font`} disabled>
+          Out of Stock
         </button>
       ) : (
         <button

@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 
 import { Loading } from '../../components/Loading/Loading.component';
 import { CartButtons } from '../../components/CartButtons/CartButtons.component';
+import { Error } from '../Error/Error.page';
 
 import styles from './ProductDetail.module.css';
 
@@ -22,7 +23,11 @@ export const ProductDetail = () => {
       .then((snapshot) => {
         setProduct({ id: snapshot.id, ...snapshot.data() });
       })
-      .catch((error) => console(error))
+      .catch((error) => {
+        console(error);
+
+        <Error />;
+      })
       .finally(() => setLoading(false));
   }, []);
 

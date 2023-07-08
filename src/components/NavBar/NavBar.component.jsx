@@ -43,7 +43,9 @@ export const NavBar = () => {
             <span className='material-symbols-outlined icon nes-pointer'>help_center</span>
           </li>
           <li>
-            <CartWidget />
+            <Link className={styles['navbar-link']} to={'/cart'}>
+              <CartWidget />
+            </Link>
           </li>
         </ul>
       </nav>
